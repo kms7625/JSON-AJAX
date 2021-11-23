@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이슨</title>
+</head>
+<body>
+  <h1>웹에서 받은 제이슨 데이터</h1>
+  <div id="output"></div>
+  <script>
+    //https://randomuser.me/api/
+    var data = '{"results":[{"gender":"female","name":{"title":"Ms","first":"Pihla","last":"Neva"},"location":{"street":{"number":4563,"name":"Hermiankatu"},"city":"Suonenjoki","state":"Åland","country":"Finland","postcode":35380,"coordinates":{"latitude":"-11.1585","longitude":"148.1361"},"timezone":{"offset":"+6:00","description":"Almaty, Dhaka, Colombo"}},"email":"pihla.neva@example.com","login":{"uuid":"c9ec73df-4cbf-4e9e-93c1-b2fb4468f9d1","username":"bigpanda217","password":"sampson","salt":"VR96K4Ko","md5":"2a584bad0dbb5b634e466e3e3b95782f","sha1":"f15fd65f691731c28d06ecc6625aed097a7374d5","sha256":"7155159aea5ef66125a590c9d11f65c8365d74ac2941b51cfa8477ae779cd64a"},"dob":{"date":"1996-07-02T15:48:19.898Z","age":25},"registered":{"date":"2014-06-29T23:54:52.512Z","age":7},"phone":"04-459-580","cell":"048-519-77-42","id":{"name":"HETU","value":"NaNNA812undefined"},"picture":{"large":"https://randomuser.me/api/portraits/women/24.jpg","medium":"https://randomuser.me/api/portraits/med/women/24.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/24.jpg"},"nat":"FI"}],"info":{"seed":"d989315ff70238a7","results":1,"page":1,"version":"1.3"}}';
+    //받아온 제이슨 데이터를 자바스크립트 객체형식으로 변환
+    var dataJSON = JSON.parse(data); 
+    var person = dataJSON.results[0];
+    console.log(person); //results 배열의 첫번째 객체(어떤 인물의 정보들이 저장됨)
+    var output = document.getElementById('output');
+
+    var html = person.name.first + ' ' + person.name.last;
+    html += '<img src="'+person.picture.thumbnail+'">';
+    output.innerHTML = html;
+
+    var strMe = JSON.stringify(dataJSON);
+    //console.log(strMe);
+  </script>
+</body>
+</html>
